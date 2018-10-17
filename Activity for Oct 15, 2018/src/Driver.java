@@ -13,6 +13,10 @@ public class Driver
 		String model;
 		float price;
 		String carrier;
+		
+		String numberToCall;
+		String messageToSend;
+		
 		List<MobilePhone> phoneList = new ArrayList<MobilePhone>();
 		int i = 0;
 		
@@ -33,8 +37,14 @@ public class Driver
 			
 			phoneList.add(new MobilePhone(manufacturer, model, price, carrier));
 			
-			System.out.println(phoneList.get(i).call("4061234567"));
-			System.out.println(phoneList.get(i).text("Hello there"));
+			System.out.println("What phone number would you like to call?: ");
+			numberToCall = input.nextLine();
+			
+			System.out.println("What message would you like to text?: ");
+			messageToSend = input.nextLine();
+			
+			System.out.println(phoneList.get(i).call(numberToCall));
+			System.out.println(phoneList.get(i).text(messageToSend));
 			System.out.println(phoneList.get(i).toString());
 			
 			i++;

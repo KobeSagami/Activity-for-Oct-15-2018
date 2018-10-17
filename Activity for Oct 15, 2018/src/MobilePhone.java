@@ -17,7 +17,29 @@ public class MobilePhone
 
 	public String call(String phoneNumber)
 	{
-		return("I am calling " + phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3, 6) + "-" + phoneNumber.substring(6, 10));
+		String extension = "";
+		String areaCode = "";
+
+		phoneNumber = phoneNumber.trim().replaceAll(" ", "").replaceAll("-", "");
+		
+		if (phoneNumber.contains("\\(") && phoneNumber.contains("\\)"));
+		{
+			extension = phoneNumber.substring(0, 3);
+			phoneNumber = phoneNumber.substring(3);
+		}
+				
+		if (phoneNumber.length() > 7)
+		{
+			areaCode = phoneNumber.substring(0, 3);
+			phoneNumber = phoneNumber.substring(3);
+			phoneNumber = extension + areaCode + "-" + phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3);
+		}
+		else
+		{
+			phoneNumber = phoneNumber.substring(0, 3) + "-" + phoneNumber.substring(3);
+		}
+
+		return("I am calling " + phoneNumber);
 	}
 	
 	public String text(String message)
